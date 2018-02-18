@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="form_layout">
+
+<body>
+<th:block layout:fragment="form_container">
+    <form th:method="post" th:action="@{'/upload'}" th:object="${fileUploadForm}" enctype="multipart/form-data">
+        <input type="hidden" th:field="*{id}"/>
+        <!--<input type="hidden" th:field="*{users}"/>-->
+        <!--<div class="form-group col-md-10">-->
+            <!--<label for="selusers" th:text="#{crud.fileupload.users}" class="col-md-12">Name</label>-->
+            <!--<select multiple="multiple" th:field="*{selectedUsers}" id="selusers" style="width: 100%;" required="">-->
+                <!--<option th:value="${ct.id}" th:text="${ct.name}" th:each="ct:${fileUploadForm.users}">Users</option>-->
+            <!--</select>-->
+            <!--<span th:if="${#fields.hasErrors('selectedUsers')}" th:errors="*{selectedUsers}" class="text-danger"></span>-->
+        <!--</div>-->
+        <div class="row">
+            <div class="col-md-2">
+                <button id="btnAddFields" class="btn btn-primary" type="button"><i class="material-icons">plus_one</i> <span th:text="#{crud.fileupload.file}">File</span></button>
+            </div>
+            <div class="col-md-2 col-offset-8">
+                <a th:href="@{/all}" class="btn btn-primary"><i class="material-icons">list</i> <span th:text="#{crud.all}">List All</span></a>
+            </div>
+        </div>
+
+        <br/>
+        <div id="files-container">
+            <div id="file-group-container" class="row">
+                <div class="form-group col-md-6">
+                    <label for="filename" th:text="#{crud.fileupload.filename}" class="col-md-12">File Name</label>
+                    <input type="text" th:field="*{names}" id="filename" class="form-control"/>
+                    <span th:if="${#fields.hasErrors('names')}" th:errors="*{names}" class="text-danger"></span>
+                </div>
+                <div class="col-md-6">
+                    <label for="files" th:text="#{crud.fileupload.file}" class="col-md-12">File</label>
+                    <input type="file" name="files" id="files" class="btn btn-primary" required="required"/>
+                    <span th:if="${#fields.hasErrors('files')}" th:errors="*{files}" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-primary pull-right" th:text="#{crud.save}">Save</button>
+            </div>
+        </div>
+    </form>
+</th:block>
+<th:block layout:fragment="ready_scripts">
+    <script th:src="@{/js/file_upload.min.js}"></script>
+</th:block>
+</body>
+</html>

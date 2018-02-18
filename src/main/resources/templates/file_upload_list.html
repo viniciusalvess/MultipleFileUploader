@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="/list_layout">
+<body>
+<th:block layout:fragment="list_container">
+    <div id="table-list-filter">
+        <a th:href="@{/}" th:text="#{menu.navbar.file.upload}">Upload</a>
+        <input class="search form-control" th:placeholder="#{crud.search}"/>
+        <table class="table">
+            <tbody class="list">
+            <tr th:each="us:${files}">
+                <td class="filterd-field">
+                    <a th:href="@{/download/{id}(id=${us.id})}" th:text="${us}"></a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</th:block>
+<!--<th:block layout:fragment="ready_scripts">-->
+    <!--<script th:src="@{/js/user_list.min.js}"></script>-->
+<!--</th:block>-->
+</body>
+</html>

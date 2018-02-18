@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<th:block layout:include="styles_admin"/>
+<body>
+
+<th:block layout:fragment="content">
+    <div class="card">
+        <div class="card-header" data-background-color="purple">
+            <h4 class="title" th:text="#{menu.navbar.file.upload}">File Uploader</h4>
+        </div>
+        <div class="card-content table-responsive">
+            <th:block layout:fragment="form_container"/>
+        </div>
+    </div>
+</th:block>
+
+<th:block layout:include="scripts_admin"/>
+<th:block layout:fragment="ready_scripts"/>
+</body>
+</html>
